@@ -1,5 +1,6 @@
 """Main script and entry point"""
 import argparse
+from gendiff.modules.gendiff import generate_diff
 
 FORMAT = ['JSON', 'plain']
 parser = argparse.ArgumentParser(description='Compares two configuration files and shows a difference.')  # noqa: E501
@@ -11,8 +12,9 @@ args = parser.parse_args()
 
 def main():
     """Main func"""
-    pass
+    print(args)
+    generate_diff(args.first_file, args.second_file)
 
 
 if __name__ == '__main__':
-    main
+    main()

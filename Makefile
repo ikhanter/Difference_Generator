@@ -12,3 +12,6 @@ publish:
 
 package-install:
 	python3 -m pip install --user dist/*.whl --force-reinstall
+
+test:
+	poetry run gendiff ./gendiff/tests/json/file1.json ./gendiff/tests/json/file2.json
