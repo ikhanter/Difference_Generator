@@ -1,6 +1,6 @@
 {
-    "name": "google.com",
-    "period": 30,
-    "server": "0.0.0.0",
-    "cover": false
-  }
+  "name": "google.com",
+  "period": 30,
+  "server": "0.0.0.0",
+  "cover": false
+}

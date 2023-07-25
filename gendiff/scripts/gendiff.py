@@ -16,7 +16,7 @@ def main():
     """Main func"""
     print(args)
     f1, f2 = read_json(args.first_file, args.second_file)
-    generate_diff(f1, f2)
+    result = generate_diff(f1, f2)
 
 
 if __name__ == '__main__':

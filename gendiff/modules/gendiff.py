@@ -34,4 +34,4 @@ def generate_diff(json1, json2):
     keys_f2 = set(json2.keys())
     all_keys = sorted(keys_f1.union(keys_f2))
     result = stringify(json1, json2, all_keys)
-    print(result)
+    return result
