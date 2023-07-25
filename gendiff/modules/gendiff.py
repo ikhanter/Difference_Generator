@@ -1,6 +1,5 @@
 """Module for finding diffs between two json-files."""
 import json
-import itertools
 
 
 def stringify(data1, data2, keys):
@@ -24,11 +23,15 @@ def stringify(data1, data2, keys):
     return '\n'.join(lines)
 
 
-def generate_diff(file1, file2):
+def read_json(file1, file2):
     f1 = json.load(open(file1))
     f2 = json.load(open(file2))
-    keys_f1 = set(f1.keys())
-    keys_f2 = set(f2.keys())
+    return f1, f2
+
+
+def generate_diff(json1, json2):
+    keys_f1 = set(json1.keys())
+    keys_f2 = set(json2.keys())
     all_keys = sorted(keys_f1.union(keys_f2))
-    result = stringify(f1, f2, all_keys)
+    result = stringify(json1, json2, all_keys)
     print(result)
