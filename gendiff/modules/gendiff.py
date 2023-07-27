@@ -1,5 +1,7 @@
 """Module for finding diffs between two json-files."""
-import json, yaml
+import json
+
+import yaml
 
 
 def stringify(data1, data2, keys):
