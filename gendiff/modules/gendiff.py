@@ -6,19 +6,13 @@ def stringify(data1, data2, keys):
     """
     Make JSON string with marked changes.
 
-    Parameters:
-    -----------
-    data1 : dict
-        JSON formed as a dict.
-    data2 : dict
-        JSON formed as a dict.
-    keys : list
-        List of all keys for two JSON files.
+    Args:
+        data1 (dict): JSON formed as a dict.
+        data2 (dict): JSON formed as a dict.
+        keys (list): List of all keys for two JSON files.
 
     Returns:
-    --------
-    str
-        String of merged JSON files with marked changes.
+        str: String of merged JSON files with marked changes.
     """
     prefix = '{'
     suffix = '}'
@@ -43,12 +37,12 @@ def read_json(file1, file2):
     """
     Read JSON files as dict.
 
-        Parameters:
-        file1: Path to JSON-file
-        file2: Path to JSON-file
+    Args:
+        file1 (path): Path to JSON-file
+        file2 (path): Path to JSON-file
 
-        Returns:
-        Tuple of two JSON objects as dicts
+    Returns:
+        tuple: Tuple of two JSON objects as dicts
     """
     with open(file1) as data1:
         with open(file2) as data2:
@@ -61,12 +55,12 @@ def generate_diff(json1, json2):
     """
     Treat keys from both JSON files for usage in stringify in future.
 
-        Parameters:
-        json1: JSON file as a dict
-        json2: JSON file as a dict
+    Args:
+        json1 (dict): JSON file as a dict
+        json2 (dict): JSON file as a dict
 
-        Returns:
-        String of merged JSON files with marked changes
+    Returns:
+        str: String of merged JSON files with marked changes
     """
     keys_f1 = set(json1.keys())
     keys_f2 = set(json2.keys())

@@ -15,8 +15,8 @@ def main():
     """
     Realize main script of the module.
 
-        Returns:
-            result: String formed as JSON
+    Returns:
+        str: String formed as JSON
     """
     f1, f2 = read_json(args.first_file, args.second_file)
     return generate_diff(f1, f2)
