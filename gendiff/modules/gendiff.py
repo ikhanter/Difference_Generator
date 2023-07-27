@@ -1,5 +1,5 @@
 """Module for finding diffs between two json-files."""
-import json
+import json, yaml
 
 
 def stringify(data1, data2, keys):
@@ -33,21 +33,25 @@ def stringify(data1, data2, keys):
     return '\n'.join(lines)
 
 
-def read_json(file1, file2):
+def read_pair_of_files(file1, file2):
     """
     Read JSON files as dict.
 
     Args:
-        file1 (path): Path to JSON-file
-        file2 (path): Path to JSON-file
+        file1 (path): Path to file
+        file2 (path): Path to file
 
     Returns:
         tuple: Tuple of two JSON objects as dicts
     """
     with open(file1) as data1:
         with open(file2) as data2:
-            f1 = json.load(data1)
-            f2 = json.load(data2)
+            if file1.endswith('.yml') or file1.endswith('.yaml'):
+                f1 = yaml.safe_load(data1)
+                f2 = yaml.safe_load(data2)
+            else:
+                f1 = json.load(data1)
+                f2 = json.load(data2)
     return f1, f2
 
 
