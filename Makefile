@@ -14,4 +14,7 @@ package-install:
 	python3 -m pip install --user dist/*.whl --force-reinstall
 
 test:
-	poetry run pytest 
+	poetry run coverage run -m pytest gendiff/tests/test_gendiff.py
+
+test-coverage:
+	poetry run pytest --cov=gendiff --cov-report xml
