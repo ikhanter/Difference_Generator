@@ -1,14 +1,14 @@
 """Test module for gendiff."""
 from gendiff.modules.gendiff import generate_diff, read_json
 
-with open('gendiff/tests/fixtures/expected1.txt') as expected:
+with open('tests/fixtures/expected1.txt') as expected:
     expected_partial, expected_full, expected_null = (''.join(expected.readlines()).split('\n\n\n'))  # noqa: E501
 
 file1, file2, file3, file4 = (
-    'gendiff/tests/fixtures/file1.json',
-    'gendiff/tests/fixtures/file2.json',
-    'gendiff/tests/fixtures/file3.json',
-    'gendiff/tests/fixtures/file4.json',
+    'tests/fixtures/file1.json',
+    'tests/fixtures/file2.json',
+    'tests/fixtures/file3.json',
+    'tests/fixtures/file4.json',
 )
 
 
