@@ -3,6 +3,7 @@
 
 ### CodeClimate status:
 [![Maintainability](https://api.codeclimate.com/v1/badges/13a738a082e82c452efe/maintainability)](https://codeclimate.com/github/ikhanter/python-project-50/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/13a738a082e82c452efe/test_coverage)](https://codeclimate.com/github/ikhanter/python-project-50/test_coverage)
 
 
 ### Demonstration
