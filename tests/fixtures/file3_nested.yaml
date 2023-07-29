@@ -1,0 +1,26 @@
+{
+  "common": {
+    "setting1": "Value 1",
+    "setting2": 200,
+    "setting3": true,
+    "setting6": {
+      "doge": {
+        "wow": "real"
+      }
+    }
+  },
+  "group1": {
+    "baz": "bas",
+    "foo": "barss",
+    "nest": {
+    "key": "value"
+    }
+  },
+  "group2": {
+    "abc": 12345,
+    "deep": {
+    "id": 45,
+    "uid": 48
+    }
+  }
+}
