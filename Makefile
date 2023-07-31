@@ -23,3 +23,6 @@ check: selfcheck test lint
 
 build: check
 	poetry build
+
+demo:
+	gendiff tests/fixtures/file1_nested.json tests/fixtures/file3_nested.yaml

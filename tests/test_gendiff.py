@@ -1,7 +1,7 @@
 """Test module for gendiff."""
 from gendiff.modules.gendiff import form_diff
 from gendiff.modules.loader import read_pair_of_files
-from gendiff.modules.formatter import generate_diff
+from gendiff.modules.stylish import generate_diff
 
 with open('tests/fixtures/expected_plain.txt') as expected:
     expected_partial, expected_full, expected_null = (''.join(expected.readlines()).split('\n\n\n'))  # noqa: E501

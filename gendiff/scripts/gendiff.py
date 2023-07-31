@@ -1,9 +1,9 @@
 """Main script and entry point."""
 import argparse
 
-from gendiff.modules.formatter import generate_diff
 from gendiff.modules.gendiff import form_diff
 from gendiff.modules.loader import read_pair_of_files
+from gendiff.modules.stylish import generate_diff
 
 FORMAT = ('JSON', 'plain')
 parser = argparse.ArgumentParser(description='Compares two configuration files and shows a difference.')  # noqa: E501
