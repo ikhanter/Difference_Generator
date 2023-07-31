@@ -10,62 +10,62 @@ REPLACER_MINUS = '  - '
 SUFFIX = '}'
 
 
-def generate_diff(data1, data2):  # noqa: C901
-    """
-    Make JSON string with marked changes.
+# def generate_diff(data1, data2):  # noqa: C901
+#     """
+#     Make JSON string with marked changes.
 
-    Args:
-        data1 (dict): JSON formed as a dict.
-        data2 (dict): JSON formed as a dict.
+#     Args:
+#         data1 (dict): JSON formed as a dict.
+#         data2 (dict): JSON formed as a dict.
 
-    Returns:
-        str: String of merged JSON files with marked changes.
-    """
-    lines = []
-    depth = 0
-    lines.append(f'{REPLACER * depth}{PREFIX}')
+#     Returns:
+#         str: String of merged JSON files with marked changes.
+#     """
+#     lines = []
+#     depth = 0
+#     lines.append(f'{REPLACER * depth}{PREFIX}')
 
-    def add_one_dict(source: dict, init, depth, filler='    '):  # noqa: WPS442
-        lines.append(f'{REPLACER * (depth - 1)}{filler}{init}: {PREFIX}')
-        for key, val in source.items():  # noqa: WPS110
-            if isinstance(val, dict):
-                add_one_dict(val, key, depth + 1)
-            else:
-                lines.append(f'{REPLACER * (depth + 1)}{key}: {str(val)}')
-        lines.append(f'{REPLACER * (depth)}{SUFFIX}')
+#     def add_one_dict(source: dict, init, depth, filler='    '):  # noqa: WPS442
+#         lines.append(f'{REPLACER * (depth - 1)}{filler}{init}: {PREFIX}')
+#         for key, val in source.items():  # noqa: WPS110
+#             if isinstance(val, dict):
+#                 add_one_dict(val, key, depth + 1)
+#             else:
+#                 lines.append(f'{REPLACER * (depth + 1)}{key}: {str(val)}')
+#         lines.append(f'{REPLACER * (depth)}{SUFFIX}')
 
-    def walk(value1, value2, keys, depth):  # noqa: WPS442
-        for key in keys:
-            if key in value1.keys() and key in value2.keys():
-                if isinstance(value1[key], dict):
-                    if isinstance(value2[key], dict):
-                        lines.append(f'{REPLACER * (depth + 1)}{key}: {PREFIX}')  # noqa: E501
-                        walk(value1[key], value2[key], take_keys(value1[key], value2[key]), depth + 1)  # noqa: E501
-                    else:
-                        add_one_dict(value1[key], key, depth + 1, REPLACER_MINUS)  # noqa: E501
-                        lines.append(f'{REPLACER * depth}{REPLACER_PLUS}{key}: {str(value2[key])}')  # noqa: E501
-                elif isinstance(value2[key], dict):
-                    lines.append(f'{REPLACER * depth}{REPLACER_PLUS}{key}: {str(value1[key])}')  # noqa: E501
-                    add_one_dict(value2[key], key, depth + 1, REPLACER_PLUS)
-                elif value1[key] == value2[key]:
-                    lines.append(f'{REPLACER * (depth + 1)}{key}: {str(value1[key])}')  # noqa: E501
-                else:
-                    lines.append(f'{REPLACER * depth}{REPLACER_MINUS}{key}: {str(value1[key])}')  # noqa: E501
-                    lines.append(f'{REPLACER * depth}{REPLACER_PLUS}{key}: {str(value2[key])}')  # noqa: E501
-            elif key in value1.keys():
-                if isinstance(value1[key], dict):
-                    add_one_dict(value1[key], key, depth + 1, REPLACER_MINUS)
-                else:
-                    lines.append(f'{REPLACER * depth}{REPLACER_MINUS}{key}: {str(value1[key])}')  # noqa: E501
-            else:
-                if isinstance(value2[key], dict):
-                    add_one_dict(value2[key], key, depth + 1, REPLACER_PLUS)
-                else:
-                    lines.append(f'{REPLACER * depth}{REPLACER_PLUS}{key}: {str(value2[key])}')  # noqa: E501
-        lines.append(f'{REPLACER * depth}{SUFFIX}')
-        return '\n'.join(lines)
+#     def walk(value1, value2, keys, depth):  # noqa: WPS442
+#         for key in keys:
+#             if key in value1.keys() and key in value2.keys():
+#                 if isinstance(value1[key], dict):
+#                     if isinstance(value2[key], dict):
+#                         lines.append(f'{REPLACER * (depth + 1)}{key}: {PREFIX}')  # noqa: E501
+#                         walk(value1[key], value2[key], take_keys(value1[key], value2[key]), depth + 1)  # noqa: E501
+#                     else:
+#                         add_one_dict(value1[key], key, depth + 1, REPLACER_MINUS)  # noqa: E501
+#                         lines.append(f'{REPLACER * depth}{REPLACER_PLUS}{key}: {str(value2[key])}')  # noqa: E501
+#                 elif isinstance(value2[key], dict):
+#                     lines.append(f'{REPLACER * depth}{REPLACER_PLUS}{key}: {str(value1[key])}')  # noqa: E501
+#                     add_one_dict(value2[key], key, depth + 1, REPLACER_PLUS)
+#                 elif value1[key] == value2[key]:
+#                     lines.append(f'{REPLACER * (depth + 1)}{key}: {str(value1[key])}')  # noqa: E501
+#                 else:
+#                     lines.append(f'{REPLACER * depth}{REPLACER_MINUS}{key}: {str(value1[key])}')  # noqa: E501
+#                     lines.append(f'{REPLACER * depth}{REPLACER_PLUS}{key}: {str(value2[key])}')  # noqa: E501
+#             elif key in value1.keys():
+#                 if isinstance(value1[key], dict):
+#                     add_one_dict(value1[key], key, depth + 1, REPLACER_MINUS)
+#                 else:
+#                     lines.append(f'{REPLACER * depth}{REPLACER_MINUS}{key}: {str(value1[key])}')  # noqa: E501
+#             else:
+#                 if isinstance(value2[key], dict):
+#                     add_one_dict(value2[key], key, depth + 1, REPLACER_PLUS)
+#                 else:
+#                     lines.append(f'{REPLACER * depth}{REPLACER_PLUS}{key}: {str(value2[key])}')  # noqa: E501
+#         lines.append(f'{REPLACER * depth}{SUFFIX}')
+#         return '\n'.join(lines)
 
-    return walk(data1, data2, take_keys(data1, data2), depth)
+#     return walk(data1, data2, take_keys(data1, data2), depth)
 
 
 def take_keys(data1, data2):
@@ -129,3 +129,68 @@ def change_bool(source):
         elif source[key] is False:
             source[key] = 'false'
     return source
+
+
+def form_diff(data1, data2):
+    diff = {}
+
+    def walk(value1, value2, diff_dict):
+        all_keys = take_keys(value1, value2)
+        for key in all_keys:
+            if key in value1.keys():
+                if key in value2.keys():
+                    if isinstance(value1[key], dict) and isinstance(value2[key], dict):
+                        diff_dict[key] = {}
+                        walk(value1[key], value2[key], diff_dict[key])
+                    elif value1[key] == value2[key]:
+                        diff_dict[key] = 'unchanged'
+                    else:
+                        diff_dict[key] = 'changed'
+                else:
+                    diff_dict[key] = 'removed'
+            else:
+                diff_dict[key] = 'added'
+    
+    walk(data1, data2, diff)
+    return diff
+
+
+def generate_diff(data1, data2):
+    diff = form_diff(data1, data2)
+    lines = []
+    depth = 0
+    init = ''
+
+    def add_element(source, init, sign, depth, change=False):
+        sign_before = REPLACER
+        if change:
+            sign_before = sign
+        if isinstance(source, dict):
+            lines.append(f'{REPLACER * (depth - 1)}{sign_before}{init}: {PREFIX}')
+            for key in source.keys():
+                add_element(source[key], key, sign, depth + 1)
+            lines.append(f'{REPLACER * depth}{SUFFIX}')
+        else:
+            lines.append(f'{REPLACER * (depth - 1)}{sign_before}{init}: {source}')
+
+    def walk(value1, value2, inner_diff, depth, init):
+        if init:
+            init += ': '
+        lines.append(f'{REPLACER * depth}{init}{PREFIX}')
+        for key in inner_diff.keys():
+            if isinstance(inner_diff[key], dict):
+                walk(value1[key], value2[key], inner_diff[key], depth + 1, key)
+            match inner_diff[key]:
+                case 'changed':
+                    add_element(value1[key], key, REPLACER_MINUS, depth + 1, change=True)
+                    add_element(value2[key], key, REPLACER_PLUS, depth + 1, change=True)
+                case 'added':
+                    add_element(value2[key], key, REPLACER_PLUS, depth + 1, change=True)
+                case 'removed':
+                    add_element(value1[key], key, REPLACER_MINUS, depth + 1, change=True)
+                case 'unchanged':
+                    add_element(value1[key], key, REPLACER, depth + 1)
+        lines.append(f'{REPLACER * depth}{SUFFIX}')
+  
+    walk(data1, data2, diff, depth, '')
+    return '\n'.join(lines)
