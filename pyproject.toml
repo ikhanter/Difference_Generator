@@ -1,10 +1,17 @@
 [tool.poetry]
 name = "hexlet-code"
 version = "0.1.0"
-description = ""
+description = "Module for generating diff between two JSON-like files. Works with .json and .yml/.yaml files."
 authors = ["Yulian <khantermail@gmail.com>"]
 readme = "README.md"
 packages = [{include = "gendiff"}]
+repository = "https://github.com/ikhanter/python-project-50"
+classifiers = [
+    "Programming Language :: Python :: 3.10",
+    "Environment :: Console",
+    "Topic :: Text Processing"
+]
+
 
 [tool.poetry.dependencies]
 python = "^3.10"
