@@ -7,10 +7,13 @@
 
 
 ### Stylish Plain demo
-[![gendiff demonstration](https://asciinema.org/a/5yQeRkEvygG8rZNydBJmHxliF.svg)](https://asciinema.org/a/5yQeRkEvygG8rZNydBJmHxliF)
+[![gendiff demonstration](https://asciinema.org/a/AzJveM1IrhjZrSWMZNQ1O2ZJM.svg)](https://asciinema.org/a/AzJveM1IrhjZrSWMZNQ1O2ZJM)
 
 ### Stylish Nested Demo
 [![gendiff demonstration](https://asciinema.org/a/VwabiDz7eayEUaMTtzIUFbmBf.svg)](https://asciinema.org/a/VwabiDz7eayEUaMTtzIUFbmBf)
 
 ### Plainstyle Nested Demo
 [![gendiff demonstration](https://asciinema.org/a/2IuVamvUXahF7X8XEXiuJSacA.svg)](https://asciinema.org/a/2IuVamvUXahF7X8XEXiuJSacA)
+
+### JSON-stile Nested Demo
+[![gendiff demonstration](https://asciinema.org/a/9fCbxgZYSxSr7V8MrUoGCHIfb.svg)](https://asciinema.org/a/9fCbxgZYSxSr7V8MrUoGCHIfb)

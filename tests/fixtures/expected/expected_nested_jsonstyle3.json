@@ -1,0 +1,75 @@
+[
+  {
+    "common": [
+      {
+        "key": "setting1",
+        "status": "removed",
+        "value": "Value 1"
+      },
+      {
+        "key": "setting2",
+        "status": "removed",
+        "value": 200
+      },
+      {
+        "key": "setting3",
+        "status": "removed",
+        "value": true
+      },
+      {
+        "setting6": [
+          {
+            "doge": [
+              {
+                "key": "such",
+                "status": "added",
+                "value": "skill"
+              },
+              {
+                "key": "wow",
+                "status": "updated",
+                "old": "real",
+                "new": "wew"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "key": "group1",
+    "status": "removed",
+    "value": {
+      "baz": "bas",
+      "foo": "barss",
+      "nest": {
+        "key": "value"
+      }
+    }
+  },
+  {
+    "group2": [
+      {
+        "key": "abc",
+        "status": "removed",
+        "value": 12345
+      },
+      {
+        "deep": [
+          {
+            "key": "id",
+            "status": "unchanged",
+            "value": 45
+          },
+          {
+            "key": "uid",
+            "status": "updated",
+            "old": 48,
+            "new": 486
+          }
+        ]
+      }
+    ]
+  }
+]

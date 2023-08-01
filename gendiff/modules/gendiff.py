@@ -1,4 +1,5 @@
 """Module for finding diffs between two json-files."""
+from gendiff.modules.formatters.json import json_diff
 from gendiff.modules.formatters.plain import plain_diff
 from gendiff.modules.formatters.stylish import stylish_diff
 
@@ -19,3 +20,5 @@ def generate_diff(data1, data2, format_name='stylish'):
         return stylish_diff(data1, data2)
     elif format_name == 'plain':
         return plain_diff(data1, data2)
+    elif format_name == 'json':
+        return json_diff(data1, data2)
