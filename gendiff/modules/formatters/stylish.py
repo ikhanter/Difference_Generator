@@ -1,5 +1,5 @@
 """Module for building diff-string for two JSON files processed by form_diff function."""  # noqa: E501
-from gendiff.modules.gendiff import form_diff
+from gendiff.modules.formdiff import form_diff
 
 PREFIX = '{'
 REPLACER = '    '
@@ -8,7 +8,7 @@ REPLACER_MINUS = '  - '
 SUFFIX = '}'
 
 
-def generate_diff(data1, data2):  # noqa: WPS210
+def stylish_diff(data1, data2):  # noqa: WPS210
     """
     Generate string with diff for two JSON/YAML files.
 

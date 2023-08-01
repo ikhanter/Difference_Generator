@@ -1,8 +1,18 @@
-"""Module for plain representation of diff"""
-from gendiff.modules.gendiff import form_diff
+"""Module for plain representation of diff."""
+from gendiff.modules.formdiff import form_diff
 
 
 def plain_diff(data1, data2):
+    """
+    Generate diff in a plain style.
+
+    Args:
+        data1 (dict): 1st JSON/YAML file as dict
+        data2 (dict): 2nd JSON/YAML file as dict
+
+    Returns:
+        str: Multiline string with diff between two files
+    """
     diff = form_diff(data1, data2)
     lines = []
     inner_path = ''
@@ -16,11 +26,10 @@ def plain_diff(data1, data2):
             if isinstance(value, str):
                 if value in bool_structures:
                     return f'{value}'
-                return f'\'{value}\''
-            elif type(value) in nested_structures:
-                return f'[complex value]'
-            else:
-                return f'{value}'
+                return f"\'{value}\'"
+            elif type(value) in nested_structures:  # noqa: WPS516
+                return '[complex value]'
+            return f'{value}'
 
         if action == 'updated':
             before = check_element(value_main)
@@ -29,11 +38,11 @@ def plain_diff(data1, data2):
         elif action == 'added':
             added = check_element(value_main)
             temp = f' with value: {added}'
-        lines.append(f'Property \'{path[:-1]}\' was {action}{temp}')
+        lines.append(f"Property \'{path[:-1]}\' was {action}{temp}")
 
     def walk(value1, value2, inner_diff, inner_path):
         for key in inner_diff.keys():
-            in_path = inner_path + f'{key}.'
+            in_path = f'{inner_path}{key}.'
             if isinstance(inner_diff[key], dict):
                 walk(value1[key], value2[key], inner_diff[key], in_path)
             match inner_diff[key]:

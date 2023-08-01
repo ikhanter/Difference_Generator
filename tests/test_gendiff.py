@@ -1,7 +1,6 @@
 """Test module for gendiff."""
+from gendiff.modules.gendiff import generate_diff
 from gendiff.modules.loader import read_pair_of_files
-from gendiff.modules.formatters.plain import plain_diff
-from gendiff.modules.formatters.stylish import generate_diff
 
 with open('tests/fixtures/expected_plain.txt') as expected:
     expected_partial, expected_full, expected_null = (''.join(expected.readlines()).split('\n\n\n'))  # noqa: E501
@@ -47,35 +46,35 @@ f3_yaml_nested, f4_yaml_nested = read_pair_of_files(file3_nested, file4_nested)
 
 def test_flat_intersection():
     """Test function with flat JSON and YAML files."""
-    assert generate_diff(f1_json, f2_json) == expected_partial, \
+    assert generate_diff(f1_json, f2_json, 'stylish') == expected_partial, \
         'Test of partial intersection of JSON files is failed'  # noqa: S101, N400, E501
-    assert generate_diff(f1_json, f3_json) == expected_full, \
+    assert generate_diff(f1_json, f3_json, 'stylish') == expected_full, \
         'Test of full intersection of JSON files is failed'  # noqa: S101, N400
-    assert generate_diff(f1_json, f4_json) == expected_null, \
+    assert generate_diff(f1_json, f4_json, 'stylish') == expected_null, \
         'Test of null intersection of JSON files is failed'  # noqa: S101, N400
-    assert generate_diff(f1_yaml, f2_yaml) == expected_partial, \
+    assert generate_diff(f1_yaml, f2_yaml, 'stylish') == expected_partial, \
         'Test of partial intersection of YAML files is failed'  # noqa: S101, N400, E501
-    assert generate_diff(f1_yaml, f3_yaml) == expected_full, \
+    assert generate_diff(f1_yaml, f3_yaml, 'stylish') == expected_full, \
         'Test of full intersection of YAML files is failed'  # noqa: S101, N400
-    assert generate_diff(f1_yaml, f4_yaml) == expected_null, \
+    assert generate_diff(f1_yaml, f4_yaml, 'stylish') == expected_null, \
         'Test of null intersection of YAML files is failed'  # noqa: S101, N400
 
 
 def test_nested_intersection():
     """Test function with nested JSON and YAML files."""
-    assert generate_diff(f1_json_nested, f2_json_nested) == expected_nested_json, \
+    assert generate_diff(f1_json_nested, f2_json_nested, 'stylish') == expected_nested_json, \
     'Test of nested intersection of JSON files is failed'  # noqa: S101, N400
-    assert generate_diff(f1_json_nested, f3_yaml_nested) == expected_nested_both, \
+    assert generate_diff(f1_json_nested, f3_yaml_nested, 'stylish') == expected_nested_both, \
     'Test of nested intersection of JSON/YAML files is failed'  # noqa: S101, N400
-    assert generate_diff(f3_yaml_nested, f4_yaml_nested) == expected_nested_yaml, \
+    assert generate_diff(f3_yaml_nested, f4_yaml_nested, 'stylish') == expected_nested_yaml, \
     'Test of nested intersection of YAML files is failed'  # noqa: S101, N400
 
 
 def test_plainstyle_intersection():
     """Test function with nested JSON and YAML files for plain style."""
-    assert plain_diff(f1_json_nested, f2_json_nested) == expected_plainstyle_json, \
+    assert generate_diff(f1_json_nested, f2_json_nested, 'plain') == expected_plainstyle_json, \
     'Test of plainstyle intersection of JSON files is failed'  # noqa: S101, N400
-    assert plain_diff(f1_json_nested, f3_yaml_nested) == expected_plainstyle_both, \
+    assert generate_diff(f1_json_nested, f3_yaml_nested, 'plain') == expected_plainstyle_both, \
     'Test of plainstyle intersection of JSON/YAML files is failed'  # noqa: S101, N400
-    assert plain_diff(f3_yaml_nested, f4_yaml_nested) == expected_plainstyle_yaml, \
+    assert generate_diff(f3_yaml_nested, f4_yaml_nested, 'plain') == expected_plainstyle_yaml, \
     'Test of plainstyle intersection of YAML files is failed'  # noqa: S101, N400

@@ -6,8 +6,11 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/13a738a082e82c452efe/test_coverage)](https://codeclimate.com/github/ikhanter/python-project-50/test_coverage)
 
 
-### Plain demo
+### Stylish Plain demo
 [![gendiff demonstration](https://asciinema.org/a/5yQeRkEvygG8rZNydBJmHxliF.svg)](https://asciinema.org/a/5yQeRkEvygG8rZNydBJmHxliF)
 
-### Nested Demo
+### Stylish Nested Demo
 [![gendiff demonstration](https://asciinema.org/a/VwabiDz7eayEUaMTtzIUFbmBf.svg)](https://asciinema.org/a/VwabiDz7eayEUaMTtzIUFbmBf)
+
+### Plainstyle Nested Demo
+[![gendiff demonstration](https://asciinema.org/a/2IuVamvUXahF7X8XEXiuJSacA.svg)](https://asciinema.org/a/2IuVamvUXahF7X8XEXiuJSacA)

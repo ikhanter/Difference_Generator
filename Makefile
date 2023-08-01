@@ -24,5 +24,8 @@ check: selfcheck test lint
 build: check
 	poetry build
 
-demo:
+demo_default:
 	gendiff tests/fixtures/file1_nested.json tests/fixtures/file3_nested.yaml
+
+demo_plain:
+	gendiff tests/fixtures/file1_nested.json tests/fixtures/file3_nested.yaml -f plain
