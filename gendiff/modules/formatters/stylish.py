@@ -1,4 +1,6 @@
 """Module for building diff-string for two JSON files processed by form_diff function."""  # noqa: E501
+from gendiff.modules.gendiff import form_diff
+
 PREFIX = '{'
 REPLACER = '    '
 REPLACER_PLUS = '  + '
@@ -6,20 +8,20 @@ REPLACER_MINUS = '  - '
 SUFFIX = '}'
 
 
-def generate_diff(data1, data2, diff):  # noqa: WPS210
+def generate_diff(data1, data2):  # noqa: WPS210
     """
     Generate string with diff for two JSON/YAML files.
 
     Args:
         data1 (dict): JSON-file as dict
         data2 (dict): JSON-file as dict
-        diff (dict): nested structure with changed in data1 relatively data2
 
     Returns:
         str: Complex string contains diff
     """
     lines = []
     depth = 0
+    diff = form_diff(data1, data2)
 
     def add_element(source, init, sign, depth, change=False):
         sign_before = REPLACER
@@ -41,7 +43,7 @@ def generate_diff(data1, data2, diff):  # noqa: WPS210
             if isinstance(inner_diff[key], dict):
                 walk(value1[key], value2[key], inner_diff[key], depth + 1, key)
             match inner_diff[key]:
-                case 'changed':
+                case 'updated':
                     add_element(value1[key], key, REPLACER_MINUS, depth + 1, change=True)  # noqa: E501
                     add_element(value2[key], key, REPLACER_PLUS, depth + 1, change=True)  # noqa: E501
                 case 'added':

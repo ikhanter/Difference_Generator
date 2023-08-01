@@ -41,7 +41,7 @@ def form_diff(data1, data2):
                     elif value1[key] == value2[key]:
                         diff_dict[key] = 'unchanged'
                     else:
-                        diff_dict[key] = 'changed'
+                        diff_dict[key] = 'updated'
                 else:
                     diff_dict[key] = 'removed'
             else:
