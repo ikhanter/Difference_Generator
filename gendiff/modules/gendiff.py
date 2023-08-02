@@ -2,6 +2,7 @@
 from gendiff.modules.formatters.json import json_diff
 from gendiff.modules.formatters.plain import plain_diff
 from gendiff.modules.formatters.stylish import stylish_diff
+from gendiff.modules.loader import read_pair_of_files
 
 
 def generate_diff(data1, data2, format_name='stylish'):
@@ -17,8 +18,8 @@ def generate_diff(data1, data2, format_name='stylish'):
         str: Multiline string of the diff
     """
     if format_name == 'stylish':
-        return stylish_diff(data1, data2)
+        return stylish_diff(*read_pair_of_files(data1, data2))
     elif format_name == 'plain':
-        return plain_diff(data1, data2)
+        return plain_diff(*read_pair_of_files(data1, data2))
     elif format_name == 'json':
-        return json_diff(data1, data2)
+        return json_diff(*read_pair_of_files(data1, data2))

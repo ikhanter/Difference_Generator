@@ -2,7 +2,6 @@
 import json
 
 from gendiff.modules.gendiff import generate_diff
-from gendiff.modules.loader import read_pair_of_files
 
 with open('tests/fixtures/expected/expected_plain.txt') as expected:
     expected_partial, expected_full, expected_null = (''.join(expected.readlines()).split('\n\n\n'))  # noqa: E501
@@ -23,7 +22,7 @@ with open('tests/fixtures/expected/expected_nested_jsonstyle3.json') as expected
     expected_jsonstyle_yaml = json.load(expected)  # noqa: E501
 
 # JSON plain
-file1, file2, file3, file4 = (
+f1_json, f2_json, f3_json, f4_json = (
     'tests/fixtures/files/file1.json',
     'tests/fixtures/files/file2.json',
     'tests/fixtures/files/file3.json',
@@ -31,28 +30,20 @@ file1, file2, file3, file4 = (
 )
 
 # YAML plain
-file5, file6, file7, file8 = (
+f1_yaml, f2_yaml, f3_yaml, f4_yaml = (
     'tests/fixtures/files/file1.yml',
     'tests/fixtures/files/file2.yaml',
     'tests/fixtures/files/file3.yml',
     'tests/fixtures/files/file4.yaml',
 )
 
-# JSON nested
-file1_nested, file2_nested, file3_nested, file4_nested = (
+# JSON/YAML nested
+f1_json_nested, f2_json_nested, f3_yaml_nested, f4_yaml_nested = (
     'tests/fixtures/files/file1_nested.json',
     'tests/fixtures/files/file2_nested.json',
     'tests/fixtures/files/file3_nested.yaml',
     'tests/fixtures/files/file4_nested.yml',
 )
-
-
-f1_json, f2_json = read_pair_of_files(file1, file2)
-f3_json, f4_json = read_pair_of_files(file3, file4)
-f1_yaml, f2_yaml = read_pair_of_files(file5, file6)
-f3_yaml, f4_yaml = read_pair_of_files(file7, file8)
-f1_json_nested, f2_json_nested = read_pair_of_files(file1_nested, file2_nested)
-f3_yaml_nested, f4_yaml_nested = read_pair_of_files(file3_nested, file4_nested)
 
 
 def test_flat_intersection():
