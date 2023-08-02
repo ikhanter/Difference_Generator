@@ -5,21 +5,24 @@ from gendiff.modules.formatters.stylish import stylish_diff
 from gendiff.modules.loader import read_pair_of_files
 
 
-def generate_diff(data1, data2, format_name='stylish'):
+def generate_diff(path1, path2, format_name='stylish'):
     """
     Simplify script building for gendiff.
 
     Args:
-        data1 (path): Path for the first file
-        data2 (path): Path for the second file
-        format_name (default='stylish', 'plain'): Representation format of the diff  # noqa: E501
+        path1 (path): Path for the first file
+        path2 (path): Path for the second file
+        format_name (default='stylish', 'plain', 'json'): Representation format of the diff  # noqa: E501
 
     Returns:
         str: Multiline string of the diff
     """
     if format_name == 'stylish':
-        return stylish_diff(*read_pair_of_files(data1, data2))
+        f1_dict, f2_dict = read_pair_of_files(path1, path2)
+        return stylish_diff(f1_dict, f2_dict)
     elif format_name == 'plain':
-        return plain_diff(*read_pair_of_files(data1, data2))
+        f1_dict, f2_dict = read_pair_of_files(path1, path2)
+        return plain_diff(f1_dict, f2_dict)
     elif format_name == 'json':
-        return json_diff(*read_pair_of_files(data1, data2))
+        f1_dict, f2_dict = read_pair_of_files(path1, path2)
+        return json_diff(f1_dict, f2_dict)
