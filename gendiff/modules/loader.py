@@ -37,15 +37,20 @@ def read_pair_of_files(file1, file2):
     Returns:
         tuple: Tuple of two JSON objects as dicts
     """
-    with open(file1) as data1:
-        if file1.endswith('.yml') or file1.endswith('.yaml'):
-            f1 = yaml.safe_load(data1)
+    if not isinstance(file1, dict):
+        if not isinstance(file2, dict):
+            with open(file1) as data1:
+                if file1.endswith('.yml') or file1.endswith('.yaml'):
+                    f1 = yaml.safe_load(data1)
+                else:
+                    f1 = json.load(data1)
+            with open(file2) as data2:
+                if file2.endswith('.yml') or file2.endswith('.yaml'):
+                    f2 = yaml.safe_load(data2)
+                else:
+                    f2 = json.load(data2)
         else:
-            f1 = json.load(data1)
-
-    with open(file2) as data2:
-        if file2.endswith('.yml') or file2.endswith('.yaml'):
-            f2 = yaml.safe_load(data2)
-        else:
-            f2 = json.load(data2)
+            f2 = file2
+    else:
+        f1 = file1
     return change_bool(f1), change_bool(f2)
