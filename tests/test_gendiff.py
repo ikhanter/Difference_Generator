@@ -65,28 +65,28 @@ def test_flat_intersection():
 def test_nested_intersection():
     """Test function with nested JSON and YAML files."""
     assert generate_diff(f1_json_nested, f2_json_nested, 'stylish') == expected_nested_json, \
-    'Test of nested intersection of JSON files is failed'  # noqa: S101, N400
+        'Test of nested intersection of JSON files is failed'  # noqa: S101, N400
     assert generate_diff(f1_json_nested, f3_yaml_nested, 'stylish') == expected_nested_both, \
-    'Test of nested intersection of JSON/YAML files is failed'  # noqa: S101, N400
+        'Test of nested intersection of JSON/YAML files is failed'  # noqa: S101, N400
     assert generate_diff(f3_yaml_nested, f4_yaml_nested, 'stylish') == expected_nested_yaml, \
-    'Test of nested intersection of YAML files is failed'  # noqa: S101, N400
+        'Test of nested intersection of YAML files is failed'  # noqa: S101, N400
 
 
 def test_plainstyle_intersection():
     """Test function with nested JSON and YAML files for plain style."""
     assert generate_diff(f1_json_nested, f2_json_nested, 'plain') == expected_plainstyle_json, \
-    'Test of plainstyle intersection of JSON files is failed'  # noqa: S101, N400
+        'Test of plainstyle intersection of JSON files is failed'  # noqa: S101, N400
     assert generate_diff(f1_json_nested, f3_yaml_nested, 'plain') == expected_plainstyle_both, \
-    'Test of plainstyle intersection of JSON/YAML files is failed'  # noqa: S101, N400
+        'Test of plainstyle intersection of JSON/YAML files is failed'  # noqa: S101, N400
     assert generate_diff(f3_yaml_nested, f4_yaml_nested, 'plain') == expected_plainstyle_yaml, \
-    'Test of plainstyle intersection of YAML files is failed'  # noqa: S101, N400
+        'Test of plainstyle intersection of YAML files is failed'  # noqa: S101, N400
 
 
 def test_jsonstyle_intersection():
     """Test function with nested JSON and YAML files for JSON style."""
     assert generate_diff(f1_json_nested, f2_json_nested, 'json') == json.dumps(expected_jsonstyle_json, indent=2), \
-    'Test of JSON-style intersection of JSON files is failed'  # noqa: S101, N400
+        'Test of JSON-style intersection of JSON files is failed'  # noqa: S101, N400
     assert generate_diff(f1_json_nested, f3_yaml_nested, 'json') == json.dumps(expected_jsonstyle_both, indent=2), \
-    'Test of JSON-style intersection of JSON/YAML files is failed'  # noqa: S101, N400
+        'Test of JSON-style intersection of JSON/YAML files is failed'  # noqa: S101, N400
     assert generate_diff(f3_yaml_nested, f4_yaml_nested, 'json') == json.dumps(expected_jsonstyle_yaml, indent=2), \
-    'Test of JSON-style intersection of YAML files is failed'  # noqa: S101, N400
+        'Test of JSON-style intersection of YAML files is failed'  # noqa: S101, N400
