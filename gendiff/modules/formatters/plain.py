@@ -1,6 +1,6 @@
 """Module for plain representation of diff."""
-from gendiff.modules.formdiff import form_diff
 from gendiff.modules.formatters.changebool import change_bool
+
 
 def plain_diff(data1, data2, diff):
     """
@@ -9,6 +9,7 @@ def plain_diff(data1, data2, diff):
     Args:
         data1 (dict): 1st JSON/YAML file as dict
         data2 (dict): 2nd JSON/YAML file as dict
+        diff (dict): dict with statuses of keys
 
     Returns:
         str: Multiline string with diff between two files

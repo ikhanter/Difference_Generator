@@ -1,8 +1,6 @@
 """JSON-style formatter for diff."""
 import json
 
-from gendiff.modules.formdiff import form_diff
-
 
 def json_diff(data1, data2, diff):
     """
@@ -11,6 +9,7 @@ def json_diff(data1, data2, diff):
     Args:
         data1 (dict): First JSON-file as a dict
         data2 (dict): Second JSON-file as a dict
+        diff (dict): dict with statuses of keys
 
     Returns:
         list: JSON representation of diff between two files

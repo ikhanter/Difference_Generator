@@ -3,7 +3,6 @@ import json
 
 import yaml
 
-from gendiff.modules.formdiff import form_diff
 
 def transform_path_to_dict(path_name):
     """
@@ -18,8 +17,7 @@ def transform_path_to_dict(path_name):
     with open(path_name) as source:
         if path_name.endswith('.yml') or path_name.endswith('.yaml'):
             return yaml.safe_load(source)
-        else:
-            return json.load(source)
+        return json.load(source)
 
 
 def read_pair_of_files(file1, file2):

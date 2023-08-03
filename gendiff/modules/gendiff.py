@@ -2,8 +2,8 @@
 from gendiff.modules.formatters.json import json_diff
 from gendiff.modules.formatters.plain import plain_diff
 from gendiff.modules.formatters.stylish import stylish_diff
-from gendiff.modules.loader import read_pair_of_files
 from gendiff.modules.formdiff import form_diff
+from gendiff.modules.loader import read_pair_of_files
 
 
 def generate_diff(path1, path2, format_name='stylish'):

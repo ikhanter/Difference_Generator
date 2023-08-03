@@ -1,5 +1,4 @@
 """Module for building diff-string for two JSON files processed by form_diff function."""  # noqa: E501
-from gendiff.modules.formdiff import form_diff
 from gendiff.modules.formatters.changebool import change_bool
 
 PREFIX = '{'

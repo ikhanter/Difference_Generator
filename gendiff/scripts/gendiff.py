@@ -12,13 +12,8 @@ args = parser.parse_args()
 
 
 def main():
-    """
-    Realize main script of the module.
-
-    Returns:
-        str: String formed as JSON
-    """
-    print(generate_diff(args.first_file, args.second_file, args.format))  # noqa: E501
+    """Realize main script of the module."""
+    print(generate_diff(args.first_file, args.second_file, args.format))  # noqa: E501, WPS421
 
 
 if __name__ == '__main__':

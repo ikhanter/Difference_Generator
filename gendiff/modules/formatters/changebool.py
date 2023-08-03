@@ -1,4 +1,6 @@
 """Module for changing post-processed boolean data after using json-module to original JSON values."""  # noqa: E501
+
+
 def change_bool(source):
     """
     Change source values after json-module processing to original JSON values.
