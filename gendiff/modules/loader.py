@@ -3,27 +3,23 @@ import json
 
 import yaml
 
+from gendiff.modules.formdiff import form_diff
 
-def change_bool(source):
+def transform_path_to_dict(path_name):
     """
-    Change source values after json-module processing to original JSON values.
+    Take a file and transform to dict.
 
     Args:
-        source (json/dict): JSON-source
+        path_name (path): Path to JSON/YAML file
 
     Returns:
-        source: Changed initial source
+        dict: Dataset from file as dict
     """
-    for key in source.keys():
-        if isinstance(source[key], dict):  # noqa: WPS204
-            change_bool(source[key])
-        elif source[key] is None:
-            source[key] = 'null'
-        elif source[key] is True:
-            source[key] = 'true'
-        elif source[key] is False:
-            source[key] = 'false'
-    return source
+    with open(path_name) as source:
+        if path_name.endswith('.yml') or path_name.endswith('.yaml'):
+            return yaml.safe_load(source)
+        else:
+            return json.load(source)
 
 
 def read_pair_of_files(file1, file2):
@@ -37,20 +33,4 @@ def read_pair_of_files(file1, file2):
     Returns:
         tuple: Tuple of two JSON objects as dicts
     """
-    if not isinstance(file1, dict):
-        with open(file1) as data1:
-            if file1.endswith('.yml') or file1.endswith('.yaml'):
-                f1 = yaml.safe_load(data1)
-            else:
-                f1 = json.load(data1)
-    else:
-        f1 = file1
-    if not isinstance(file2, dict):
-        with open(file2) as data2:
-            if file2.endswith('.yml') or file2.endswith('.yaml'):
-                f2 = yaml.safe_load(data2)
-            else:
-                f2 = json.load(data2)
-    else:
-        f2 = file2
-    return change_bool(f1), change_bool(f2)
+    return transform_path_to_dict(file1), transform_path_to_dict(file2)  # noqa: E501

@@ -3,6 +3,7 @@ from gendiff.modules.formatters.json import json_diff
 from gendiff.modules.formatters.plain import plain_diff
 from gendiff.modules.formatters.stylish import stylish_diff
 from gendiff.modules.loader import read_pair_of_files
+from gendiff.modules.formdiff import form_diff
 
 
 def generate_diff(path1, path2, format_name='stylish'):
@@ -17,12 +18,11 @@ def generate_diff(path1, path2, format_name='stylish'):
     Returns:
         str: Multiline string of the diff
     """
+    f1, f2 = read_pair_of_files(path1, path2)
+    diff = form_diff(f1, f2)
     if format_name == 'stylish':
-        f1_dict, f2_dict = read_pair_of_files(path1, path2)
-        return stylish_diff(f1_dict, f2_dict)
+        return stylish_diff(f1, f2, diff)
     elif format_name == 'plain':
-        f1_dict, f2_dict = read_pair_of_files(path1, path2)
-        return plain_diff(f1_dict, f2_dict)
+        return plain_diff(f1, f2, diff)
     elif format_name == 'json':
-        f1_dict, f2_dict = read_pair_of_files(path1, path2)
-        return json_diff(f1_dict, f2_dict)
+        return json_diff(f1, f2, diff)

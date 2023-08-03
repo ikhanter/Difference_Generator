@@ -4,7 +4,7 @@ import json
 from gendiff.modules.formdiff import form_diff
 
 
-def json_diff(data1, data2):
+def json_diff(data1, data2, diff):
     """
     Make JSON representation of diff.
 
@@ -15,7 +15,6 @@ def json_diff(data1, data2):
     Returns:
         list: JSON representation of diff between two files
     """
-    diff = form_diff(data1, data2)
 
     def walk(value1, value2, inner_diff):
 

@@ -2,7 +2,6 @@
 import argparse
 
 from gendiff.modules.gendiff import generate_diff
-from gendiff.modules.loader import read_pair_of_files
 
 FORMAT = ('stylish', 'plain', 'json')
 parser = argparse.ArgumentParser(description='Compares two configuration files and shows a difference.')  # noqa: E501
@@ -19,13 +18,7 @@ def main():
     Returns:
         str: String formed as JSON
     """
-    f1, f2 = read_pair_of_files(args.first_file, args.second_file)
-    if args.format == 'stylish':
-        return generate_diff(f1, f2, 'stylish')
-    elif args.format == 'plain':
-        return generate_diff(f1, f2, 'plain')
-    elif args.format == 'json':
-        return generate_diff(f1, f2, 'json')
+    print(generate_diff(args.first_file, args.second_file, args.format))  # noqa: E501
 
 
 if __name__ == '__main__':

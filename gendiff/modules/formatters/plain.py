@@ -1,8 +1,8 @@
 """Module for plain representation of diff."""
 from gendiff.modules.formdiff import form_diff
+from gendiff.modules.formatters.changebool import change_bool
 
-
-def plain_diff(data1, data2):
+def plain_diff(data1, data2, diff):
     """
     Generate diff in a plain style.
 
@@ -13,7 +13,6 @@ def plain_diff(data1, data2):
     Returns:
         str: Multiline string with diff between two files
     """
-    diff = form_diff(data1, data2)
     lines = []
     inner_path = ''
 
@@ -23,13 +22,14 @@ def plain_diff(data1, data2):
         def check_element(value):
             nested_structures = (list, dict, tuple, set)
             bool_structures = ('true', 'false', 'null')
-            if isinstance(value, str):
-                if value in bool_structures:
-                    return f'{value}'
-                return f"\'{value}\'"
-            elif type(value) in nested_structures:  # noqa: WPS516
+            new_value = change_bool(value)
+            if isinstance(new_value, str):
+                if new_value in bool_structures:
+                    return f'{new_value}'
+                return f"\'{new_value}\'"
+            elif type(new_value) in nested_structures:  # noqa: WPS516
                 return '[complex value]'
-            return f'{value}'
+            return f'{new_value}'
 
         if action == 'updated':
             before = check_element(value_main)
