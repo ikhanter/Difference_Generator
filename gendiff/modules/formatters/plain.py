@@ -2,13 +2,11 @@
 from gendiff.modules.formatters.changebool import change_bool
 
 
-def plain_diff(data1, data2, diff):
+def plain_diff(diff):
     """
     Generate diff in a plain style.
 
     Args:
-        data1 (dict): 1st JSON/YAML file as dict
-        data2 (dict): 2nd JSON/YAML file as dict
         diff (dict): dict with statuses of keys
 
     Returns:
@@ -17,7 +15,7 @@ def plain_diff(data1, data2, diff):
     lines = []
     inner_path = ''
 
-    def add_element(value_main, action, path, *value_opt):
+    def add_element(source, path):
         temp = ''
 
         def check_element(value):
@@ -32,27 +30,23 @@ def plain_diff(data1, data2, diff):
                 return '[complex value]'
             return f'{new_value}'
 
-        if action == 'updated':
-            before = check_element(value_main)
-            after = check_element(value_opt[0])
-            temp = f'. From {before} to {after}'
-        elif action == 'added':
-            added = check_element(value_main)
-            temp = f' with value: {added}'
-        lines.append(f"Property \'{path[:-1]}\' was {action}{temp}")
+        if source['status'] != 'unchanged':
+            if source['status'] == 'updated':
+                before = check_element(source['old_value'])
+                after = check_element(source['actual_value'])
+                temp = f'. From {before} to {after}'
+            elif source['status'] == 'added':
+                added = check_element(source['actual_value'])
+                temp = f' with value: {added}'
+            lines.append(f"Property \'{path[:-1]}\' was {source['status']}{temp}")  # noqa: E501
 
-    def walk(value1, value2, inner_diff, inner_path):
-        for key in inner_diff.keys():
-            in_path = f'{inner_path}{key}.'
-            if isinstance(inner_diff[key], dict):
-                walk(value1[key], value2[key], inner_diff[key], in_path)
-            match inner_diff[key]:
-                case 'updated':
-                    add_element(value1[key], 'updated', in_path, value2[key])
-                case 'added':
-                    add_element(value2[key], 'added', in_path)
-                case 'removed':
-                    add_element(value1[key], 'removed', in_path)
+    def walk(inner_diff, inner_path):
+        for element in inner_diff:
+            in_path = f"{inner_path}{element['key']}."
+            if isinstance(element['actual_value'], list):
+                walk(element['actual_value'], in_path)
+            else:
+                add_element(element, in_path)
 
-    walk(data1, data2, diff, inner_path)
+    walk(diff, inner_path)
     return '\n'.join(lines)

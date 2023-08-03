@@ -21,8 +21,8 @@ def generate_diff(path1, path2, format_name='stylish'):
     f1, f2 = read_pair_of_files(path1, path2)
     diff = form_diff(f1, f2)
     if format_name == 'stylish':
-        return stylish_diff(f1, f2, diff)
+        return stylish_diff(diff)
     elif format_name == 'plain':
-        return plain_diff(f1, f2, diff)
+        return plain_diff(diff)
     elif format_name == 'json':
-        return json_diff(f1, f2, diff)
+        return json_diff(diff)

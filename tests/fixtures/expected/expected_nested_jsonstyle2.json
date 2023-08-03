@@ -1,84 +1,91 @@
 [
   {
-    "common": [
+    "key": "common",
+    "actual_value": [
       {
         "key": "setting1",
         "status": "unchanged",
-        "value": "Value 1"
+        "actual_value": "Value 1"
       },
       {
         "key": "setting2",
         "status": "unchanged",
-        "value": 200
+        "actual_value": 200
       },
       {
         "key": "setting3",
         "status": "unchanged",
-        "value": true
+        "actual_value": true
       },
       {
-        "setting6": [
+        "key": "setting6",
+        "actual_value": [
           {
-            "doge": [
+            "key": "doge",
+            "actual_value": [
               {
                 "key": "wow",
                 "status": "updated",
-                "old": "",
-                "new": "real"
+                "old_value": "",
+                "actual_value": "real"
               }
             ]
           },
           {
             "key": "key",
             "status": "removed",
-            "value": "value"
+            "actual_value": "value"
           }
         ]
       }
     ]
   },
   {
-    "group1": [
+    "key": "group1",
+    "actual_value": [
       {
         "key": "baz",
         "status": "unchanged",
-        "value": "bas"
+        "actual_value": "bas"
       },
       {
         "key": "foo",
         "status": "updated",
-        "old": "bar",
-        "new": "barss"
+        "old_value": "bar",
+        "actual_value": "barss"
       },
       {
-        "nest": [
+        "key": "nest",
+        "actual_value": [
           {
             "key": "key",
             "status": "unchanged",
-            "value": "value"
+            "actual_value": "value"
           }
         ]
       }
     ]
   },
   {
-    "group2": [
+    "key": "group2",
+    "actual_value": [
       {
         "key": "abc",
         "status": "unchanged",
-        "value": 12345
+        "actual_value": 12345
       },
       {
-        "deep": [
+        "key": "deep",
+        "actual_value": [
           {
             "key": "id",
             "status": "unchanged",
-            "value": 45
+            "actual_value": 45
           },
           {
             "key": "uid",
             "status": "added",
-            "value": 48
+            "actual_value": 48
           }
         ]
       }

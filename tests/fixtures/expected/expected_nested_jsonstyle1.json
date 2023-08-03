@@ -1,92 +1,96 @@
 [
   {
-    "common": [
+    "key": "common",
+    "actual_value": [
       {
         "key": "follow",
         "status": "added",
-        "value": false
+        "actual_value": false
       },
       {
         "key": "setting1",
         "status": "unchanged",
-        "value": "Value 1"
+        "actual_value": "Value 1"
       },
       {
         "key": "setting2",
         "status": "removed",
-        "value": 200
+        "actual_value": 200
       },
       {
         "key": "setting3",
         "status": "updated",
-        "old": true,
-        "new": null
+        "old_value": true,
+        "actual_value": null
       },
       {
         "key": "setting4",
         "status": "added",
-        "value": "blah blah"
+        "actual_value": "blah blah"
       },
       {
         "key": "setting5",
         "status": "added",
-        "value": {
+        "actual_value": {
           "key5": "value5"
         }
       },
       {
-        "setting6": [
+        "key": "setting6",
+        "actual_value": [
           {
-            "doge": [
+            "key": "doge",
+            "actual_value": [
               {
                 "key": "wow",
                 "status": "updated",
-                "old": "",
-                "new": "so much"
+                "old_value": "",
+                "actual_value": "so much"
               }
             ]
           },
           {
             "key": "key",
             "status": "unchanged",
-            "value": "value"
+            "actual_value": "value"
           },
           {
             "key": "ops",
             "status": "added",
-            "value": "vops"
+            "actual_value": "vops"
           }
         ]
       }
     ]
   },
   {
-    "group1": [
+    "key": "group1",
+    "actual_value": [
       {
         "key": "baz",
         "status": "updated",
-        "old": "bas",
-        "new": "bars"
+        "old_value": "bas",
+        "actual_value": "bars"
       },
       {
         "key": "foo",
         "status": "unchanged",
-        "value": "bar"
+        "actual_value": "bar"
       },
       {
         "key": "nest",
         "status": "updated",
-        "old": {
+        "old_value": {
           "key": "value"
         },
-        "new": "str"
+        "actual_value": "str"
       }
     ]
   },
   {
     "key": "group2",
     "status": "removed",
-    "value": {
+    "actual_value": {
       "abc": 12345,
       "deep": {
         "id": 45
@@ -96,7 +100,7 @@
   {
     "key": "group3",
     "status": "added",
-    "value": {
+    "actual_value": {
       "deep": {
         "id": {
           "number": 45

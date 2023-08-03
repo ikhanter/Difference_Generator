@@ -1,35 +1,38 @@
 [
   {
-    "common": [
+    "key": "common",
+    "actual_value": [
       {
         "key": "setting1",
         "status": "removed",
-        "value": "Value 1"
+        "actual_value": "Value 1"
       },
       {
         "key": "setting2",
         "status": "removed",
-        "value": 200
+        "actual_value": 200
       },
       {
         "key": "setting3",
         "status": "removed",
-        "value": true
+        "actual_value": true
       },
       {
-        "setting6": [
+        "key": "setting6",
+        "actual_value": [
           {
-            "doge": [
+            "key": "doge",
+            "actual_value": [
               {
                 "key": "such",
                 "status": "added",
-                "value": "skill"
+                "actual_value": "skill"
               },
               {
                 "key": "wow",
                 "status": "updated",
-                "old": "real",
-                "new": "wew"
+                "old_value": "real",
+                "actual_value": "wew"
               }
             ]
           }
@@ -40,7 +43,7 @@
   {
     "key": "group1",
     "status": "removed",
-    "value": {
+    "actual_value": {
       "baz": "bas",
       "foo": "barss",
       "nest": {
@@ -49,24 +52,26 @@
     }
   },
   {
-    "group2": [
+    "key": "group2",
+    "actual_value": [
       {
         "key": "abc",
         "status": "removed",
-        "value": 12345
+        "actual_value": 12345
       },
       {
-        "deep": [
+        "key": "deep",
+        "actual_value": [
           {
             "key": "id",
             "status": "unchanged",
-            "value": 45
+            "actual_value": 45
           },
           {
             "key": "uid",
             "status": "updated",
-            "old": 48,
-            "new": 486
+            "old_value": 48,
+            "actual_value": 486
           }
         ]
       }
