@@ -37,7 +37,6 @@ From directory of the repository:
   - Nested structures for Plain output: "make demo_plain"
   - Nested structures for JSON output: "make demo_json"
 
-
 ### Stylish Plain demo
 [![gendiff demonstration](https://asciinema.org/a/AzJveM1IrhjZrSWMZNQ1O2ZJM.svg)](https://asciinema.org/a/AzJveM1IrhjZrSWMZNQ1O2ZJM)
 
